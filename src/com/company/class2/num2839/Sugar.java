@@ -4,26 +4,18 @@ import java.util.Scanner;
 
 public class Sugar {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
-        int weight = sc.nextInt();
+        int N = sc.nextInt();
 
-        int max = 5;
-        int min = 3;
-        int remain = weight%max;
-
-        for(int i = weight/max; i>=0; i--){
-            int divid = i;
-            for(int j = remain; j>=0; j--){
-                if(remain <min){
-                    break;
-                }else{
-                    if(i == weight/max && j ==remain){
-
-                    }
-                }
-            }
+        if(N == 4 || N == 7){
+            System.out.println(-1);
+        }else if(N % 5 ==0){
+            System.out.println(N / 5);
+        }else if(N % 5 ==1 || N % 5 == 3){
+            System.out.println((N / 5) +1);
+        }else if(N % 5 == 2 || N % 5 == 4){
+            System.out.println((N / 5) +2);
         }
     }
 }
