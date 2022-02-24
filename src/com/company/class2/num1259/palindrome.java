@@ -1,4 +1,4 @@
-package com.company.class2.num1181;
+package com.company.class2.num1259;
 
 import java.util.Scanner;
 
