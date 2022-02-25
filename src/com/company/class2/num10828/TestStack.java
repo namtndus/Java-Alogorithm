@@ -1,43 +1,55 @@
 package com.company.class2.num10828;
 
+import java.io.*;
+import java.nio.Buffer;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class TestStack {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Stack<Integer> stack = new Stack<>();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st ;
 
-        int n = sc.nextInt();
+        ArrayList<Integer> stack = new ArrayList<>();
+
+        int n = Integer.parseInt(br.readLine());
         for(int i = 0; i<n; i++){
-            String command = sc.next();
+            st = new StringTokenizer(br.readLine()," ");
+            String command = st.nextToken();
             if(command.equals("push")){
-                int num = sc.nextInt();
-                stack.push(num);
+                int num = Integer.parseInt(st.nextToken());
+                stack.add(num);
+
             }else if(command.equals("pop")){
-                if(stack.empty() == true){
-                    System.out.println(-1);
+                if(stack.size() == 0){
+                    bw.write(-1+"\n");
                 }else {
-                    System.out.println(stack.pop());
+
+                    bw.write(stack.remove(stack.size() - 1)  + "\n");
                 }
             }else if(command.equals("size")){
-                System.out.println(stack.size());
+                bw.write(stack.size() + "\n");
             }else if(command.equals("empty")){
-                if(stack.empty() == true){
-                    System.out.println(1);
+                if(stack.size() == 0){
+                    bw.write(1 + "\n");
                 }else{
-                    System.out.println(0);
+                    bw.write(0 + "\n");
                 }
             }else{
-                if(stack.empty() == true){
-                    System.out.println(-1);
+                if(stack.size() == 0){
+                    bw.write(-1+"\n");
                 }else{
-                    System.out.println(stack.peek());
+                    bw.write(stack.get(stack.size() - 1)+ "\n");
                 }
 
             }
 
         }
-
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
