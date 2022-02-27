@@ -1,25 +1,28 @@
 package com.company.class2.num2751;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Sort {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int size = Integer.parseInt(br.readLine());
-        int[] list = new int[size];
+        StringBuilder sb = new StringBuilder();
 
-        for(int i = 0; i<size; i++){
-            list[i] = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for(int i = 0; i < N; i++){
+            list.add(Integer.parseInt(br.readLine()));
         }
 
-        Arrays.sort(list);
-        for(int i = 0; i<size; i++){
-            bw.write(list[i] + "\n");
+        Collections.sort(list);
+
+        for(int value : list){
+            sb.append(value).append('\n');
         }
-        bw.flush();
-        bw.close();
-        br.close();
+        System.out.println(sb);
     }
 }
