@@ -4,9 +4,12 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 public class OrganicCabbage {
-    static int num = 0;
-    static int[][] field = new int[51][51];
-    static boolean[][] isChecked = new boolean[51][51];
+    static int M, N, K;
+    static int[][] cabbage;
+    static boolean[][] isChecked;
+    static int count;
+    static int[] dx = {0, -1, 0, 1};
+    static int[] dy = {1, 0, -1, 0};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,58 +18,49 @@ public class OrganicCabbage {
         int sizeOfTest = Integer.parseInt(br.readLine());
 
         for(int i = 0; i<sizeOfTest; i++){
+            count = 0;
             StringTokenizer st = new StringTokenizer(br.readLine()," ");
-            int weight = Integer.parseInt(st.nextToken());
-            int height = Integer.parseInt(st.nextToken());
-            int numOfCabbage = Integer.parseInt(st.nextToken());
+            M = Integer.parseInt(st.nextToken());
+            N = Integer.parseInt(st.nextToken());
+            cabbage = new int[M][N];
+            isChecked = new boolean[M][N];
 
-            for(int j = 0; j<numOfCabbage; j++){
+            K = Integer.parseInt(st.nextToken());
+
+            for(int j = 0; j<K; j++){
                 st = new StringTokenizer(br.readLine()," ");
-                field[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())] =1;
+                int row = Integer.parseInt(st.nextToken());
+                int col = Integer.parseInt(st.nextToken());
+                cabbage[row][col] =1;
             }
 
-            for(int j = 0; j<weight; j++){
-                for(int z = 0; z<height; z++){
-                    if(isChecked[j][z] != true && field[j][z] == 1){
-                        int size = bfs(j,z);
-                        if(size >0){
-                            num +=1;
-                        }
+            for(int x = 0; x < M; x++){
+                for(int y = 0; y < N; y++){
+                    if(!isChecked[x][y] && cabbage[x][y] == 1){
+                        dfs(x,y);
+                        count++;
                     }
                 }
             }
-            bw.write(num+ "\n");
-            num = 0;
+            bw.write(count+ "\n");
         }
         bw.flush();
         bw.close();
 
     }
 
-    private static int bfs(int i, int j) {
-        int bSize = 0;
-        for(int a = j; a<field[i].length; a++){
-            if(field[i][a] == 1){
-                isChecked[i][a] = true;
-                bSize+=1;
-                bSize += dfs(i,a);
-            }else{
-                break;
-            }
-        }
-        return bSize;
-    }
+    private static void dfs(int x, int y) {
+        isChecked[x][y] = true;
+        for(int i = 0; i < 4; i++){
+            int cx = x + dx[i];
+            int cy = y + dy[i];
 
-    private static int dfs(int i, int a) {
-        int dsize = 0;
-        for(int b = i+1; b<field.length; b++){
-            if(field[b][a] == 1){
-                isChecked[b][a] = true;
-                dsize += 1;
-            }else{
-                break;
+            if(cx >= 0 && cy >= 0 && cx < M && cy < N){
+                if(!isChecked[cx][cy] && cabbage[cx][cy] == 1){
+                    dfs(cx,cy);
+                }
             }
         }
-        return dsize;
+
     }
 }
