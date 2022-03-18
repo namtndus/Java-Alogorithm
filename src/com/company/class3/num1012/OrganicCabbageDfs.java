@@ -3,7 +3,7 @@ package com.company.class3.num1012;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class OrganicCabbage {
+public class OrganicCabbageDfs {
     static int M, N, K;
     static int[][] cabbage;
     static boolean[][] isChecked;
