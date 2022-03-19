@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class NumOfConnectedComponent {
+public class NumOfConnectedComponentDfs {
 
     static int[][] graph;
     static boolean[] isChecked;
