@@ -15,9 +15,11 @@ public class Carpet {
             if((row - 2) * (col - 2) == yellow){
                 answer[0] = col;
                 answer[1] = row;
-                return answer;
+                System.out.println(answer);
+                return;
             }
-            return answer;
+            System.out.println(answer);
+            return;
         }
     }
 }
