@@ -1,4 +1,4 @@
-package com.company.programmers.carpet;
+package com.company.programmers.level2.carpet;
 
 public class Carpet {
     static int brown = 10;

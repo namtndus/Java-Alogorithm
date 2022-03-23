@@ -1,4 +1,4 @@
-package com.company.programmers.sumOfNums;
+package com.company.programmers.level1.sumOfNums;
 
 public class SumOfNums {
     public static void main(String[] args) {

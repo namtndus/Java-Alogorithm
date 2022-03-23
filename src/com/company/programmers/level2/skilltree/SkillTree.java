@@ -1,4 +1,4 @@
-package com.company.programmers.skilltree;
+package com.company.programmers.level2.skilltree;
 
 public class SkillTree {
 

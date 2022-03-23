@@ -1,4 +1,4 @@
-package com.company.programmers.knum;
+package com.company.programmers.level1.knum;
 
 import java.util.Arrays;
 

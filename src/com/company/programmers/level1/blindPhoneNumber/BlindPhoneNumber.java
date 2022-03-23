@@ -1,4 +1,4 @@
-package com.company.programmers.blindPhoneNumber;
+package com.company.programmers.level1.blindPhoneNumber;
 
 public class BlindPhoneNumber {
     static String phone_number = "01033334444";

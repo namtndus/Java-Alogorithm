@@ -1,6 +1,4 @@
-package com.company.programmers.makingPrimeNumber;
-
-import com.company.class2.num2231.Sum;
+package com.company.programmers.level1.makingPrimeNumber;
 
 import java.util.ArrayList;
 

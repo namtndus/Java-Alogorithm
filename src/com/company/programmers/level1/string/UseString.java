@@ -1,4 +1,4 @@
-package com.company.programmers.string;
+package com.company.programmers.level1.string;
 
 public class UseString {
     static String s = "124";

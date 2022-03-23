@@ -1,4 +1,4 @@
-package com.company.programmers.dontGotheDistancePlayer;
+package com.company.programmers.level1.dontGotheDistancePlayer;
 
 public class DontGotheDistancePlayer {
     static String[] participant = {"mislav", "stanko", "mislav", "ana"};

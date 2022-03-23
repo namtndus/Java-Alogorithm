@@ -1,4 +1,4 @@
-package com.company.programmers.kakaoCrane;
+package com.company.programmers.level1.kakaoCrane;
 
 import java.util.Stack;
 

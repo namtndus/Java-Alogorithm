@@ -1,4 +1,4 @@
-package com.company.programmers.sum;
+package com.company.programmers.level1.sum;
 
 public class Sum {
 

@@ -1,7 +1,6 @@
-package com.company.programmers.findNum;
+package com.company.programmers.level1.findNum;
 
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class FindNum {
     public static void main(String[] args) throws IOException {

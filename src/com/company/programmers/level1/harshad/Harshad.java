@@ -1,4 +1,4 @@
-package com.company.programmers.harshad;
+package com.company.programmers.level1.harshad;
 
 public class Harshad {
     static int x = 10;
