@@ -7,22 +7,19 @@ public class HIndex {
     static int[] citations = {3,0,6,1,5};
 
     public static void main(String[] args) {
+        int answer = 0;
 
         Arrays.sort(citations);
-        int max = Integer.MIN_VALUE;
 
         for(int i = 0; i < citations.length; i++){
-            int count = i;
-            for(int j = i+1; j < citations.length; j++){
-                if(citations[i] < citations[j]){
-                    count++;
-                }
-            }
-            if(max < count){
-                max = count;
+            int h = citations.length - i;
+
+            if(citations[i] >= h){
+                answer = h;
+                break;
             }
         }
 
-        System.out.println(max-1);
+        System.out.println(answer);
     }
 }
