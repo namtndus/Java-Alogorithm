@@ -1,8 +1,6 @@
 package com.company.programmers.level2.bigNum;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class BigNum {
 
@@ -16,16 +14,15 @@ public class BigNum {
             stringNumbers[i] = Integer.toString(numbers[i]);
         }
 
-        Arrays.sort(stringNumbers, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return (o2+o1).compareTo(o1+o2);
-            }
-        });
+        Arrays.sort(stringNumbers, (o1, o2) -> (o2+o1).compareTo(o1+o2));
 
-        if(stringNumbers[0].equals("0")) return "0";
+        if(stringNumbers[0].equals("0")){
+            System.out.println(0);
+            return ;
+        }
 
-        return String.join("",stringNumbers);
+
+        System.out.println(String.join("",stringNumbers));
 
     }
 
