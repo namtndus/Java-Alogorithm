@@ -6,40 +6,45 @@ import java.util.Queue;
 
 public class FarthestNode {
     public int solution(int n, int[][] edge) {
-        int size = 0;
-        int[] isChecked = new int[n + 1];
-        Arrays.fill(isChecked, Integer.MAX_VALUE);
-        isChecked[0] = 0;
-        isChecked[1] = 0;
-        boolean[][] graph = new boolean[n + 1][n + 1];
-        for (int i = 0; i < edge.length; i++) {
-            graph[edge[i][0]][edge[i][1]] = true;
-            graph[edge[i][1]][edge[i][0]] = true;
-        }
-
-        dfs(isChecked, graph,0,1);
-
         int answer = 0;
+        int[] dist = new int[n+!];
 
-        for (int i = 2; i < isChecked.length; i++) {
-            if (answer < isChecked[i]) {
-                answer = isChecked[i];
-            }
+        Arrays.fill(dist,Integer.MAX_VALUE);
+
+        dijkstra(1, edge, dist);
+        int max = 0;
+        for(int i = 0; i< dist.length; i++){
+            if(dist[i] == Integer.MAX_VALUE) continue;
+            max = Math.max(max,dist[i]);
         }
-        for(int i = 2; i<isChecked.length; i++){
-            if(answer == isChecked[i]){
-                size++;
-            }
+        for(int i = 0; i < dist.length; i++){
+            if(max == dist[i]) answer++;
         }
 
+        return answer;
 
-        return size;
     }
 
-    private void dfs(int[] isChecked, boolean[][] graph, int num, int x) {
-       for(int j = 2; j< isChecked.length; j++){
+    private void dijkstra(int start, int[][] edge, int[] dist) {
+        dist[start] = 0;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);
 
-       }
+        while(!queue.isEmpty()){
+            int pop = queue.remove();
+            for(int i = 0; i < edge.length; i++){
+                if(edge[i][0] == pop || edge[i][1] == pop){
+                    int next = edge[i][1];
+                    if(edge[i][1] == pop) next = edge[i][0];
+
+                    if(dist[next] > dist[pop] +1){
+                        dist[next] = dist[pop] +1;
+                        queue.add(next);
+                    }
+                }
+            }
+        }
+
     }
 
     public static void main(String[] args) {
