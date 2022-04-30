@@ -17,7 +17,7 @@ public class BigNum {
             @Override
             public int compare(String s1, String s2) {
                 return (s2+s1).compareTo(s1+s2);  // 내림차순 정렬
-            }
+            } // 610 // 106
         });
 
         for(String tmp :strNumber){
