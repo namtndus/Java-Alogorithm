@@ -7,28 +7,54 @@ public class Joystick {
     public int solution(String name){
 
         boolean[] isChecked = new boolean[name.length()];
-        int[] x = new int[]{1,-1};
-        char answer = 'A';
         char[] str = name.toCharArray();
 
-        changeChar(x,str,answer,isChecked,0);
+        changeChar(str,isChecked,0);
 
-        count += name.length()-1;
 
         return count;
     }
 
-    private void changeChar(int[] x, char[] str, char answer,boolean[] isChecked, int order) {
-        int num = str[order] - answer;
+    private void changeChar(char[] str,boolean[] isChecked, int order) {
+
+        if(isChecked[order]){
+            return ;
+        }
+
+        if(order != 0){
+            count++;
+        }
+        isChecked[order] = true;
+        int num = str[order] - 'A';
         if(num >= 13){
             num = Math.abs(num-26);
         }
-        
+        count += num;
+        int leftNum = order - 1;
+        int rightNum = order + 1;
+
+        if(rightNum >= str.length){
+            rightNum -= str.length;
+        }
+        if(leftNum < 0 ){
+            leftNum += str.length;
+        }
+        if(str[rightNum] == 'A'){
+            isChecked[rightNum] = true;
+        }else{
+            changeChar(str, isChecked, rightNum);
+        }
+        if(str[leftNum] == 'A'){
+            isChecked[leftNum] = true;
+        }else{
+            changeChar(str,isChecked,leftNum);
+        }
+
     }
 
     public static void main(String[] args) {
         Joystick joystick = new Joystick();
-        System.out.println(joystick.solution("JAZ"));
+        System.out.println(joystick.solution("ABABAAAAABA"));
     }
 
 }

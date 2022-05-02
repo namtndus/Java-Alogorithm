@@ -7,7 +7,7 @@ import java.util.Queue;
 public class FarthestNode {
     public int solution(int n, int[][] edge) {
         int answer = 0;
-        int[] dist = new int[n+!];
+        int[] dist = new int[n+1];
 
         Arrays.fill(dist,Integer.MAX_VALUE);
 
