@@ -8,6 +8,7 @@ public class BestAlbum {
 
         HashMap<String, PriorityQueue<int[]>> albuum = new HashMap<>();
         HashMap<String, Integer> sumMap = new HashMap<>();
+        ArrayList<Integer> list = new ArrayList<>();
 
         for(int i = 0; i < genres.length; i++){
             if(sumMap.containsKey(genres[i])){
@@ -19,11 +20,24 @@ public class BestAlbum {
                 albuum.get(genres[i]).add(new int[]{plays[i],i});
             }
         }
-        System.out.println(albuum.get("pop").remove()[0]);
-        System.out.println(albuum.get("classic").toString());
 
+        List<Map.Entry<String,Integer>> entryList = new LinkedList<>(sumMap.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
 
-        int[] answer = {};
+        for(Map.Entry<String,Integer> entry : entryList){
+            if(albuum.get(entry.getKey()).size() >=2){
+                list.add(albuum.get(entry.getKey()).remove()[1]);
+            }
+            list.add(albuum.get(entry.getKey()).remove()[1]);
+
+        }
+
+        int[] answer = list.stream().mapToInt(i -> i).toArray();
         return answer;
     }
 
