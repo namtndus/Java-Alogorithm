@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class Bridge {
     public int solution(int bridge_length, int weight, int[] truck_weights){
-        int time = 0;
+        int sum = 0;
         int bridge_weight = 0;
 
         // 대기 틀럭
@@ -19,23 +19,30 @@ public class Bridge {
         for(int i : truck_weights){
             truck.add(i);
         }
-        for(int i = 0; i<weight; i++){
+        for(int i = 0; i<bridge_length; i++){
             bridge.add(0);
         }
 
-        while(truck.isEmpty() && bridge.isEmpty()){
-            if(bridge_weight + truck.peek() <= weight){
-                int num = truck.remove();
-                bridge.add(num);
-                bridge_weight+= num;
+        while(!truck.isEmpty()){
+            int output = bridge.remove();
+            int input = truck.peek();
+            sum = sum - output;
+            target.add(output);
+
+            if(sum + input <= weight){
+                bridge.add(truck.remove());
+                sum += input;
+            }else{
+                bridge.add(0);
             }
         }
 
-        return time;
+        return target.size()+bridge_length;
     }
 
     public static void main(String[] args) {
         Bridge bridge = new Bridge();
-        int[] truck_weights = new int[]{7,4,5,6};
+        int[] truck_weights = new int[]{10,10,10,10,10,10,10,10,10,10};
+        System.out.println(bridge.solution(100,100,truck_weights));
     }
 }
