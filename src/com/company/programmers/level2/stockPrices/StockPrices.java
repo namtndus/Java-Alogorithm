@@ -3,14 +3,25 @@ package com.company.programmers.level2.stockPrices;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class StockPrices {
 
     public int[] solution(int[] prices){
-        int[] answer = {};
-        Queue<Integer> queue = new LinkedList<>();
+        int[] answer = new int[prices.length];
+        Stack<Integer> stack = new Stack<>();
+
         for(int i = 0; i < prices.length; i++){
-            queue.add(prices[i]);
+            while (!stack.isEmpty() && prices[i] < prices[stack.peek()]){
+                answer[stack.peek()] = i - stack.peek();
+                stack.pop();
+            }
+            stack.push(i);
+        }
+
+        while (!stack.isEmpty()){
+            answer[stack.peek()] = prices.length - stack.peek();
+            stack.pop();
         }
         return answer;
     }
