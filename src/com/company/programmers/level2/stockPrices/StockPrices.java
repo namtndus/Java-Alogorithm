@@ -1,8 +1,5 @@
 package com.company.programmers.level2.stockPrices;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 public class StockPrices {
